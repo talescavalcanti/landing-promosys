@@ -16,7 +16,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", href, children, ...props }, ref) => {
     // Aplicando a forma de "Pílula" (rounded-full) exigida pelas skills Premium.
     const baseStyles = "relative inline-flex items-center justify-center font-medium transition-all duration-[var(--dur-sm)] focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal-light focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed rounded-full group overflow-hidden";
-    
+
     // Sombras premium de 2 camadas no primary, sem afetar as cores dos outros no hover.
     const variants = {
       primary: "bg-royal text-[#ffffff] shadow-[0_5.98px_23.2px_0_rgba(49,121,219,0.2),0_14.3px_53.7px_0_rgba(49,121,219,0.5)] border border-royal-light/30 hover:text-oxford",
@@ -34,7 +34,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     // Efeito de preenchimento lento de baixo pra cima
     const fillElement = variant === "primary" ? (
-      <span className="absolute inset-0 w-full h-full bg-white origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-[800ms] ease-out-quart z-0"></span>
+      <span className="absolute inset-0 w-full h-full bg-white origin-bottom [transform:scaleY(0)] group-hover:[transform:scaleY(1)] transition-transform duration-[800ms] z-0" style={{ transitionTimingFunction: 'cubic-bezier(0.165, 0.84, 0.44, 1)' }}></span>
     ) : null;
 
     if (href) {
