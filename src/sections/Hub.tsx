@@ -228,11 +228,11 @@ export const Hub = () => {
           <div className="relative [transform-style:preserve-3d] w-[13rem] md:w-[20rem] aspect-square flex items-center justify-center z-10 mx-auto">
              <div className="absolute -inset-[8%] -z-10 bg-[rgba(49,121,219,0.18)] rounded-full blur-[50px]"></div>
 
-             <div className="w-full h-full bg-[rgba(49,121,219,0.12)] rounded-full flex items-center justify-center [transform:translateZ(30px)] shadow-[0_32px_72px_rgba(0,0,0,0.35)] [transform-style:preserve-3d]">
-                <div className="w-[80%] h-[80%] bg-[rgba(49,121,219,0.32)] rounded-full flex items-center justify-center [transform:translateZ(30px)] shadow-[0_48px_96px_rgba(0,0,0,0.45)] [transform-style:preserve-3d]">
-                   <div className="w-[78%] h-[78%] rounded-full flex flex-col items-center justify-center gap-1.5 [transform:translateZ(30px)] shadow-[0_48px_96px_rgba(0,0,0,0.55),inset_0_2px_12px_rgba(255,255,255,0.25)] bg-[radial-gradient(circle_at_35%_30%,var(--royal-light),var(--royal)_60%,var(--azul-tec))]">
-                      <div className="w-24 h-24 drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
-                        <img src="/promosys-logo.png" alt="Promosys Logo" className="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]" />
+             <div className="w-full h-full bg-[rgba(49,121,219,0.12)] rounded-full flex items-center justify-center [transform:translateZ(30px)] [transform-style:preserve-3d]">
+                <div className="w-[80%] h-[80%] bg-[rgba(49,121,219,0.32)] rounded-full flex items-center justify-center [transform:translateZ(30px)] [transform-style:preserve-3d]">
+                   <div className="w-[78%] h-[78%] rounded-full flex flex-col items-center justify-center gap-1.5 [transform:translateZ(30px)] shadow-[inset_0_2px_12px_rgba(255,255,255,0.25)] bg-[radial-gradient(circle_at_35%_30%,var(--royal-light),var(--royal)_60%,var(--azul-tec))]">
+                      <div className="w-28 h-28 drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+                        <img src="/logo-promosys-branca-leve.png" alt="Promosys" className="w-full h-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] object-contain" />
                       </div>
                    </div>
                 </div>

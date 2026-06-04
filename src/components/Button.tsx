@@ -19,7 +19,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     
     // Sombras premium de 2 camadas no primary, sem afetar as cores dos outros no hover.
     const variants = {
-      primary: "bg-royal text-white shadow-[0_5.98px_23.2px_0_rgba(49,121,219,0.2),0_14.3px_53.7px_0_rgba(49,121,219,0.5)] border border-royal-light/30 hover:text-oxford",
+      primary: "bg-royal text-[#ffffff] shadow-[0_5.98px_23.2px_0_rgba(49,121,219,0.2),0_14.3px_53.7px_0_rgba(49,121,219,0.5)] border border-royal-light/30 hover:text-oxford",
       secondary: "bg-white/5 text-white hover:bg-white/10 border border-white/10",
       outline: "border border-royal/50 text-cream hover:bg-white/5",
       ghost: "text-white/70 hover:text-white hover:bg-white/5"

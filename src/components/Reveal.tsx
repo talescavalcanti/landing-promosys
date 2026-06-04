@@ -17,6 +17,7 @@ export const Reveal = ({ children, width = "100%", delay = 0, className = "" }: 
   return (
     <div ref={ref} style={{ width }} className={className}>
       <motion.div
+        className="h-full w-full"
         variants={{
           hidden: { opacity: 0, y: 40 },
           visible: { opacity: 1, y: 0 },
