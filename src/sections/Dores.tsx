@@ -45,7 +45,7 @@ export const Dores = () => {
             <Reveal key={idx} delay={0.1 * idx} className="h-full">
               <GlassCard className="group p-8 flex flex-col gap-6 h-full hover:-translate-y-2 hover:border-royal/40 hover:shadow-[0_8px_30px_rgba(49,121,219,0.15)] transition-all duration-500 cursor-default">
                 <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-500 group-hover:bg-royal/20 group-hover:scale-110 group-hover:border-royal/30 group-hover:shadow-[0_0_20px_rgba(49,121,219,0.2)]">
-                  {React.cloneElement(point.icon as React.ReactElement, { className: "w-6 h-6 text-royal-light transition-transform duration-500 group-hover:scale-110" })}
+                  {React.cloneElement(point.icon as React.ReactElement<{ className?: string }>, { className: "w-6 h-6 text-royal-light transition-transform duration-500 group-hover:scale-110" })}
                 </div>
                 <div className="flex flex-col gap-2">
                   <SplitText
