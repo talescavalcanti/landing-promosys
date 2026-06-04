@@ -29,7 +29,7 @@ export const Footer = () => {
             <span className="flex items-center gap-2"><div className="w-2 h-2 bg-white rounded-sm"></div> Escalabilidade garantida</span>
           </div>
 
-          <Button href="#" className="!px-10 !py-5 !text-lg !font-bold shadow-xl bg-white text-royal hover:bg-cream hover:text-oxford border-transparent mt-2">
+          <Button href="#" className="!px-10 !py-5 !text-lg !font-bold shadow-xl bg-foreground text-background hover:bg-royal hover:text-[#ffffff] border-transparent mt-2">
             Agendar demonstração
           </Button>
         </div>

@@ -9,7 +9,7 @@ import { Hub } from "@/sections/Hub";
 import { Recursos } from "@/sections/Recursos";
 import { Resultados } from "@/sections/Resultados";
 import { Diferencial } from "@/sections/Diferencial";
-import { Planos } from "@/sections/Planos";
+import { LeadForm } from "@/sections/LeadForm";
 import { Footer } from "@/sections/Footer";
 
 export default function Home() {
@@ -47,7 +47,7 @@ export default function Home() {
         <Recursos />
         <Resultados />
         <Diferencial />
-        <Planos />
+        <LeadForm />
         <Footer />
       </main>
     </SmoothScroll>

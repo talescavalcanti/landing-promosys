@@ -31,7 +31,7 @@ export const MacbookScrollRaw = () => {
       
         <div style={{transform: 'perspective(800px) rotateX(-25deg) translateZ(0px)', transformOrigin: 'bottom', transformStyle: 'preserve-3d'}} className="relative h-[12rem] w-[32rem] rounded-2xl bg-[#010101] p-2">
           <div style={{boxShadow: '0px 2px 0px 2px #171717 inset'}} className="absolute inset-0 flex items-center justify-center rounded-lg bg-[#010101]">
-            <span className="font-display font-bold text-2xl tracking-wide text-cream opacity-50">Promosys<span className="text-royal">.</span></span>
+            <span className="font-display font-bold text-2xl tracking-wide text-[#f3efe0] opacity-50">Promosys<span className="text-royal">.</span></span>
           </div>
         </div>
 
@@ -99,11 +99,11 @@ export const MacbookScrollRaw = () => {
     </div>
 
 
-    <div className="relative -z-10 h-[22rem] w-[32rem] overflow-hidden rounded-2xl bg-gray-200 dark:bg-[#272729]">
+    <div className="relative -z-10 h-[22rem] w-[32rem] overflow-hidden rounded-2xl border border-black/10 dark:border-transparent shadow-xl" style={{ backgroundColor: 'var(--mac-body)' }}>
       
       
       <div className="relative h-10 w-full">
-        <div className="absolute inset-x-0 mx-auto h-4 w-[80%] bg-[#050505]"></div>
+        <div className="absolute inset-x-0 mx-auto h-4 w-[80%]" style={{ backgroundColor: 'var(--mac-keypad)' }}></div>
       </div>
       
       
@@ -115,7 +115,7 @@ export const MacbookScrollRaw = () => {
         
         
         <div className="mx-auto h-full w-[80%]">
-          <div id="keypad-container" className="mx-1 h-full [transform:translateZ(0)] rounded-md bg-[#050505] p-1 [will-change:transform]">
+          <div id="keypad-container" className="mx-1 h-full [transform:translateZ(0)] rounded-md p-1 [will-change:transform]" style={{ backgroundColor: 'var(--mac-keypad)', "--color-white": "#ffffff" } as React.CSSProperties}>
       
       <div className="mb-[2px] flex w-full shrink-0 gap-[2px]">
         
@@ -860,13 +860,13 @@ export const MacbookScrollRaw = () => {
       </div>
       
       
-      <div className="mx-auto my-1 h-32 w-[40%] rounded-xl bg-black/5 dark:bg-white/[0.02]" style={{boxShadow: '0px 0px 1px 1px rgba(0,0,0,0.12) inset'}}></div>
+      <div className="mx-auto my-1 h-32 w-[40%] rounded-xl bg-black/10" style={{boxShadow: '0px 0px 1px 1px rgba(0,0,0,0.12) inset'}}></div>
       
       
-      <div className="absolute inset-x-0 bottom-0 mx-auto h-2 w-20 rounded-tl-3xl rounded-tr-3xl bg-gradient-to-t from-[#272729] to-[#050505]"></div>
+      <div className="absolute inset-x-0 bottom-0 mx-auto h-2 w-20 rounded-tl-3xl rounded-tr-3xl" style={{ backgroundImage: 'linear-gradient(to top, var(--mac-body), var(--mac-keypad))' }}></div>
       
       
-      <div className="absolute inset-x-0 bottom-0 z-50 h-40 w-full bg-gradient-to-t from-white via-white to-transparent dark:from-background dark:via-background/80"></div>
+      <div className="absolute inset-x-0 bottom-0 z-50 h-40 w-full bg-gradient-to-t from-background via-background/80 to-transparent"></div>
       
     </div>
     

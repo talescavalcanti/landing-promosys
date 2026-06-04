@@ -6,8 +6,9 @@ export const GlassCard = React.forwardRef<HTMLDivElement, React.HTMLAttributes<H
     return (
       <div
         ref={ref}
+        style={{ backgroundColor: 'var(--glass-bg)', ...props.style }}
         className={cn(
-          "bg-[rgba(5,7,10,0.65)] backdrop-blur-[16px] border border-white/5 rounded-2xl shadow-[0_12px_32px_rgba(0,0,0,0.45)]",
+          "backdrop-blur-[16px] border border-black/10 dark:border-white/5 rounded-2xl shadow-xl",
           className
         )}
         {...props}

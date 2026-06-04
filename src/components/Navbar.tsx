@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "./Button";
 import { Logo } from "./Logo";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -70,7 +71,8 @@ export function Navbar() {
             </motion.a>
           ))}
         </div>
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-4">
+          <ThemeToggle />
           <Button href="#cta" className="!px-6 !py-2 !text-sm !font-semibold">Agendar Demo</Button>
         </div>
         <button className="md:hidden text-white p-2 pointer-events-auto" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menu">
