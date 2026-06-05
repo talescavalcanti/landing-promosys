@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { useTheme } from "next-themes";
 
 interface LogoProps {
@@ -13,7 +14,6 @@ export function Logo({ className = "", title }: LogoProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Flag de montagem no cliente (hidratação next-themes) — setState único intencional.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
@@ -22,13 +22,15 @@ export function Logo({ className = "", title }: LogoProps) {
   const logoSrc = currentTheme === "light" ? "/logo-promosys-azul.png" : "/logo-promosys-branca-leve.png";
 
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
+    <Image
       src={logoSrc}
-      alt={title || "Promosys Logo"}
-      className={`${className} object-contain`}
-      role={title ? "img" : undefined}
+      alt={title || "Promosys"}
+      width={160}
+      height={81}
+      priority
+      sizes="160px"
+      className={`${className} w-auto object-contain`}
       aria-hidden={title ? undefined : true}
     />
   );
-};
+}

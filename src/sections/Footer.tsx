@@ -42,26 +42,24 @@ export const Footer = () => {
             <span className="flex items-center">
               <Logo className="h-8 md:h-10 w-auto" title="Promosys" />
             </span>
-            <SplitText
-              as="p"
-              text="Inteligência de mercado, tecnologia e dados para o ecossistema de crédito consignado no Brasil."
-              className="text-sm text-sagrado/70 leading-relaxed max-w-xs"
-            />
+            <p className="text-sm text-sagrado/70 leading-relaxed max-w-xs">
+              Inteligência de mercado, tecnologia e dados para o ecossistema de crédito consignado no Brasil.
+            </p>
           </div>
           <div className="flex flex-col gap-4">
-            <SplitText as="h4" text="Institucional" className="text-cream font-semibold" />
+            <h4 className="text-cream font-semibold">Institucional</h4>
             <a href="#" className="text-sm text-sagrado/70 hover:text-white transition-colors">Sobre a Promosys</a>
             <a href="#" className="text-sm text-sagrado/70 hover:text-white transition-colors">Carreiras</a>
             <a href="#" className="text-sm text-sagrado/70 hover:text-white transition-colors">Imprensa</a>
           </div>
           <div className="flex flex-col gap-4">
-            <SplitText as="h4" text="Plataforma" className="text-cream font-semibold" />
+            <h4 className="text-cream font-semibold">Plataforma</h4>
             <a href="#hub" className="text-sm text-sagrado/70 hover:text-white transition-colors">Ecossistema</a>
             <a href="#resultados" className="text-sm text-sagrado/70 hover:text-white transition-colors">Resultados</a>
             <a href="#dores" className="text-sm text-sagrado/70 hover:text-white transition-colors">Desafios</a>
           </div>
           <div className="flex flex-col gap-4">
-            <SplitText as="h4" text="Contato" className="text-cream font-semibold" />
+            <h4 className="text-cream font-semibold">Contato</h4>
             <a href="#" className="text-sm text-sagrado/70 hover:text-white transition-colors">contato@promosys.com.br</a>
             <a href="#" className="text-sm text-sagrado/70 hover:text-white transition-colors">Suporte</a>
             <a href="#" className="text-sm text-sagrado/70 hover:text-white transition-colors">Comercial</a>

@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { animate } from "framer-motion";
+import Image from "next/image";
 import { X, Phone, Users, Shield, Calculator, MessageCircle, BarChart3, Target, LayoutGrid, Layers, Check, ArrowRight } from "lucide-react";
 import { SplitText } from "@/components/SplitText";
 import { Button } from "@/components/Button";
@@ -104,42 +104,41 @@ export const Hub = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  useGSAP(() => {
-    if (!wrapRef.current || !sectionRef.current) return;
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    const section = sectionRef.current;
+    if (!wrap || !section) return;
 
-    // Set initial 3D transform via GSAP so it doesn't conflict with CSS
-    if (!isMobile) {
-      gsap.set(wrapRef.current, { z: -50 });
-    }
+    // Profundidade inicial 3D (desktop).
+    if (!isMobile) animate(wrap, { z: -50 }, { duration: 0 });
 
     const handleMouseMove = (e: MouseEvent) => {
       if (selectedModule || isMobile || prefersReducedMotion()) return;
-      
-      const rect = wrapRef.current!.getBoundingClientRect();
+
+      const rect = wrap.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
-      
-      // Calculate distance from center relative to half window size
+
       const x = (e.clientX - centerX) / (window.innerWidth / 2);
       const y = (e.clientY - centerY) / (window.innerHeight / 2);
-      
+
       const rotY = Math.max(-1, Math.min(1, x)) * 15;
       const rotX = Math.max(-1, Math.min(1, -y)) * 15;
-      
-      gsap.to(wrapRef.current, { rotationX: rotX, rotationY: rotY, duration: 0.8, ease: 'power2.out' });
+
+      animate(wrap, { rotateX: rotX, rotateY: rotY }, { duration: 0.8, ease: "easeOut" });
     };
 
     const handleMouseLeave = () => {
       if (selectedModule || isMobile) return;
-      gsap.to(wrapRef.current, { rotationX: 0, rotationY: 0, duration: 0.8, ease: 'power2.out' });
+      animate(wrap, { rotateX: 0, rotateY: 0 }, { duration: 0.8, ease: "easeOut" });
     };
 
-    sectionRef.current.addEventListener('mousemove', handleMouseMove);
-    sectionRef.current.addEventListener('mouseleave', handleMouseLeave);
+    section.addEventListener("mousemove", handleMouseMove);
+    section.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      sectionRef.current?.removeEventListener('mousemove', handleMouseMove);
-      sectionRef.current?.removeEventListener('mouseleave', handleMouseLeave);
+      section.removeEventListener("mousemove", handleMouseMove);
+      section.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, [selectedModule, isMobile]);
 
@@ -151,20 +150,21 @@ export const Hub = () => {
     const isLeft = mod.group === 'left';
     setSelectedModule(mod.id);
 
-    gsap.to(wrapRef.current, {
-      rotationX: 10,
-      rotationY: isLeft ? -30 : 30,
-      x: isLeft ? '10vw' : '-10vw',
-      z: 60,
-      duration: 1,
-      ease: 'power3.out'
-    });
+    const shift = window.innerWidth * 0.1;
+    if (wrapRef.current) {
+      animate(wrapRef.current, {
+        rotateX: 10,
+        rotateY: isLeft ? -30 : 30,
+        x: isLeft ? shift : -shift,
+        z: 60,
+      }, { duration: 1, ease: [0.16, 1, 0.3, 1] });
+    }
   };
 
   const handleClose = () => {
     setSelectedModule(null);
-    if (!isMobile) {
-      gsap.to(wrapRef.current, { rotationX: 0, rotationY: 0, x: 0, z: 0, duration: 1, ease: 'power3.out' });
+    if (!isMobile && wrapRef.current) {
+      animate(wrapRef.current, { rotateX: 0, rotateY: 0, x: 0, z: 0 }, { duration: 1, ease: [0.16, 1, 0.3, 1] });
     }
   };
 
@@ -200,12 +200,9 @@ export const Hub = () => {
           highlightClass="text-royal"
           className="font-display font-bold text-3xl md:text-[2.8rem] leading-[1.15] tracking-tight text-cream mb-4"
         />
-        <SplitText
-          as="p"
-          text="Explore o hub interativo abaixo e conheça os principais módulos da plataforma. Passe o mouse para inclinar o painel e clique em um módulo para ver os detalhes."
-          delay={0.15}
-          className="text-sagrado text-lg"
-        />
+        <p className="text-sagrado text-lg">
+          Explore o hub interativo abaixo e conheça os principais módulos da plataforma. Passe o mouse para inclinar o painel e clique em um módulo para ver os detalhes.
+        </p>
       </div>
 
       <div className="[perspective:1000px] w-full max-w-[120rem] mx-auto flex justify-center relative min-h-[30rem]">
@@ -232,9 +229,8 @@ export const Hub = () => {
              <div className="w-full h-full bg-[rgba(49,121,219,0.12)] rounded-full flex items-center justify-center [transform:translateZ(30px)] [transform-style:preserve-3d]">
                 <div className="w-[80%] h-[80%] bg-[rgba(49,121,219,0.32)] rounded-full flex items-center justify-center [transform:translateZ(30px)] [transform-style:preserve-3d]">
                    <div className="w-[78%] h-[78%] rounded-full flex flex-col items-center justify-center gap-1.5 [transform:translateZ(30px)] shadow-[inset_0_2px_12px_rgba(255,255,255,0.25)] bg-[radial-gradient(circle_at_35%_30%,var(--royal-light),var(--royal)_60%,var(--azul-tec))]">
-                      <div className="w-28 h-28 drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src="/logo-promosys-branca-leve.png" alt="Promosys" className="w-full h-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] object-contain" />
+                      <div className="relative w-28 h-28 drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+                        <Image src="/logo-promosys-branca-leve.png" alt="Promosys" fill sizes="112px" className="object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]" />
                       </div>
                    </div>
                 </div>

@@ -53,12 +53,9 @@ export const Dores = () => {
                     text={point.title}
                     className="text-xl font-display font-semibold text-cream"
                   />
-                  <SplitText
-                    as="p"
-                    text={point.desc}
-                    delay={0.1}
-                    className="text-cream/70 text-sm leading-relaxed"
-                  />
+                  <p className="text-cream/70 text-sm leading-relaxed">
+                    {point.desc}
+                  </p>
                 </div>
               </GlassCard>
             </Reveal>

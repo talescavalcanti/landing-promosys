@@ -86,7 +86,7 @@ export function Hero() {
         />
 
         <div className="text-lg md:text-xl lg:text-2xl text-cream/90 max-w-4xl font-medium leading-relaxed text-center">
-          <SplitText as="span" text="O CRM que transforma prospecção fria em " delay={0.2} />
+          <span>O CRM que transforma prospecção fria em </span>
           <span className="text-white font-medium inline-block min-w-[140px] md:min-w-[160px] relative">
             <AnimatePresence mode="wait">
               <motion.span

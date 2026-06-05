@@ -10,11 +10,9 @@ interface SectionHeadingProps {
 export const SectionHeading = ({ eyebrow, title, className = '' }: SectionHeadingProps) => {
   return (
     <div className={`flex flex-col gap-3 ${className}`}>
-      <SplitText
-        as="span"
-        text={eyebrow}
-        className="font-sans font-bold text-[10px] tracking-[0.18em] uppercase text-royal"
-      />
+      <span className="font-sans font-bold text-[10px] tracking-[0.18em] uppercase text-royal">
+        {eyebrow}
+      </span>
       <SplitText
         as="h2"
         text={title}

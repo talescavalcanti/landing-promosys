@@ -29,12 +29,9 @@ export default function Home() {
              text="A central de comando da sua operação de crédito."
              className="text-3xl md:text-5xl font-display font-bold text-cream mb-6 tracking-tight max-w-3xl"
            />
-           <SplitText
-             as="p"
-             text="Gestão de leads, consultas estruturadas e integração bancária ponta a ponta. Esqueça as abas perdidas e foque no fechamento."
-             delay={0.15}
-             className="text-sagrado text-lg md:text-xl max-w-2xl leading-relaxed font-light"
-           />
+           <p className="text-sagrado text-lg md:text-xl max-w-2xl leading-relaxed font-light">
+             Gestão de leads, consultas estruturadas e integração bancária ponta a ponta. Esqueça as abas perdidas e foque no fechamento.
+           </p>
         </section>
 
         <section className="bg-background relative z-10 w-full pt-10">

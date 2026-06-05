@@ -1,5 +1,5 @@
 "use client";
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 import { MotionConfig } from 'framer-motion';
 import { useEffect, useState, ReactNode } from 'react';
 import { prefersReducedMotion } from '@/lib/motion';
