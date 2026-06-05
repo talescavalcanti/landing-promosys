@@ -6,7 +6,6 @@ import { MacbookScrollRaw } from "@/components/MacbookScrollRaw";
 import { MarqueePartners } from "@/sections/MarqueePartners";
 import { Dores } from "@/sections/Dores";
 import { Hub } from "@/sections/Hub";
-import { Recursos } from "@/sections/Recursos";
 import { Resultados } from "@/sections/Resultados";
 import { Diferencial } from "@/sections/Diferencial";
 import { LeadForm } from "@/sections/LeadForm";
@@ -44,7 +43,6 @@ export default function Home() {
         <MarqueePartners />
         <Dores />
         <Hub />
-        <Recursos />
         <Resultados />
         <Diferencial />
         <LeadForm />

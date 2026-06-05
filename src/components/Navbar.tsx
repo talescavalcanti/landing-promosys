@@ -19,9 +19,9 @@ export function Navbar() {
   }, []);
 
   const links = [
-    { label: "Recursos", href: "#recursos" },
-    { label: "Benefícios", href: "#beneficios" },
-    { label: "Planos", href: "#planos" },
+    { label: "Ecossistema", href: "#hub" },
+    { label: "Resultados", href: "#resultados" },
+    { label: "Contato", href: "#contato" },
   ];
 
   return (
@@ -29,7 +29,7 @@ export function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center w-full px-4 pt-6 md:pt-8 pointer-events-none"
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center w-full px-4 pt-6 md:pt-8 pointer-events-none anim-static"
     >
       <div
         className={`pointer-events-auto flex items-center justify-between transition-all duration-[var(--dur-lg)] ease-out-expo w-full ${scrolled

@@ -19,6 +19,8 @@ export function Hero() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
+    // Mobile = estático: não roda a troca de palavras.
+    if (window.matchMedia("(max-width: 767px)").matches) return;
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % words.length);
     }, 3000);
@@ -83,9 +85,9 @@ export function Hero() {
           className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold tracking-tighter text-balance max-w-[22ch] mx-auto text-white leading-[1.05] drop-shadow-2xl"
         />
 
-        <div className="text-lg md:text-xl lg:text-2xl text-cream/90 max-w-4xl font-medium leading-relaxed flex flex-col md:flex-row items-center justify-center gap-2">
-          <SplitText as="span" text="O CRM que transforma prospecção fria em" delay={0.2} />
-          <span className="text-white font-medium inline-block min-w-[160px] text-left relative">
+        <div className="text-lg md:text-xl lg:text-2xl text-cream/90 max-w-4xl font-medium leading-relaxed text-center">
+          <SplitText as="span" text="O CRM que transforma prospecção fria em " delay={0.2} />
+          <span className="text-white font-medium inline-block min-w-[140px] md:min-w-[160px] relative">
             <AnimatePresence mode="wait">
               <motion.span
                 key={index}
@@ -93,12 +95,12 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="inline-block absolute left-0"
+                className="inline-block absolute w-full left-0 text-center md:text-left"
               >
                 {words[index]}
               </motion.span>
             </AnimatePresence>
-            <span className="invisible">previsibilidade.</span>
+            <span className="invisible w-full text-center md:text-left">previsibilidade.</span>
           </span>
         </div>
 
@@ -106,14 +108,14 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="flex flex-col items-center mt-5"
+          className="flex flex-col items-center mt-5 anim-static"
         >
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full max-w-xs sm:max-w-none">
             <Button href="#cta" className="w-full sm:w-auto justify-center !px-8 !py-4 !text-base !font-semibold">
               Agendar Demonstração
             </Button>
-            <Button href="#planos" variant="outline" className="w-full sm:w-auto justify-center !px-8 !py-4 !text-base">
-              Explorar Recursos
+            <Button href="#contato" variant="outline" className="w-full sm:w-auto justify-center !px-8 !py-4 !text-base">
+              Falar com Vendas
             </Button>
           </div>
         </motion.div>
@@ -123,7 +125,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
-          className="mt-8 md:mt-10 grid w-full max-w-3xl grid-cols-2 md:grid-cols-4 gap-3"
+          className="mt-8 md:mt-10 grid w-full max-w-3xl grid-cols-2 md:grid-cols-4 gap-3 anim-static"
         >
           {stats.map((s) => (
             <div
@@ -145,7 +147,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.55, ease: "easeOut" }}
-          className="flex flex-wrap items-center justify-center gap-4 text-cream/55 text-[11px] tracking-[0.18em] uppercase"
+          className="flex flex-wrap items-center justify-center gap-4 text-cream/55 text-[11px] tracking-[0.18em] uppercase anim-static"
         >
           <span>Setup Rápido</span>
           <span className="w-1 h-1 rounded-full bg-white/20"></span>

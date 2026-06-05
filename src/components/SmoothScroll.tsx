@@ -11,11 +11,17 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     return window.location.hash === '#motion' || new URLSearchParams(window.location.search).has('motion');
   });
 
+  // Mobile (≤767px) = experiência estática: sem scroll suave nem animações Framer.
+  const [isMobile] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(max-width: 767px)').matches;
+  });
+
   useEffect(() => {
     if (forceMotion) document.documentElement.classList.add('force-motion');
 
-    // Sob "reduzir movimento" real (e sem override), não sequestra o scroll.
-    if (prefersReducedMotion()) return;
+    // Sem scroll suave no mobile ou sob "reduzir movimento".
+    if (isMobile || prefersReducedMotion()) return;
 
     const lenis = new Lenis({
       duration: 1.2,
@@ -36,9 +42,13 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     return () => {
       lenis.destroy();
     };
-  }, [forceMotion]);
+  }, [forceMotion, isMobile]);
 
-  // reducedMotion="user": Framer respeita o SO — desliga transform/layout mas
-  // MANTÉM fades de opacidade (reduzir, não remover). Com /#motion vira "never".
-  return <MotionConfig reducedMotion={forceMotion ? 'never' : 'user'}>{children}</MotionConfig>;
+  // Mobile: reducedMotion="always" (Framer sem transform/layout). Desktop: respeita
+  // o SO ("user") ou força tudo com /#motion ("never").
+  return (
+    <MotionConfig reducedMotion={isMobile ? 'always' : forceMotion ? 'never' : 'user'}>
+      {children}
+    </MotionConfig>
+  );
 }

@@ -2,7 +2,6 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 import { DashboardMockup } from "@/components/DashboardMockup";
 
 export const MacbookScrollRaw = () => {
@@ -43,22 +42,7 @@ export const MacbookScrollRaw = () => {
         
         
         <div className="absolute inset-0 rounded-lg bg-background overflow-hidden border border-royal/30">
-          <Image 
-            src="/dashboard-promosys-lightmode.png" 
-            alt="Promosys Dashboard Light Mode" 
-            fill
-            className="object-cover object-top dark:hidden"
-            quality={100}
-            priority
-          />
-          <Image 
-            src="/dashborad-promosys-darkmode.png" 
-            alt="Promosys Dashboard Dark Mode" 
-            fill
-            className="hidden dark:block object-cover object-top"
-            quality={100}
-            priority
-          />
+          <DashboardMockup />
         </div>
       </motion.div>
 

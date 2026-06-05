@@ -12,6 +12,12 @@ export const Resultados = () => {
   useGSAP(() => {
     const nums = gsap.utils.toArray('.metric-number') as HTMLElement[];
 
+    // Mobile = estático: mostra o número final, sem contagem animada.
+    if (window.matchMedia('(max-width: 767px)').matches) {
+      nums.forEach((num) => { num.innerText = num.dataset.target || "0"; });
+      return;
+    }
+
     nums.forEach(num => {
       const target = parseFloat(num.dataset.target || "0");
       gsap.fromTo(num, 

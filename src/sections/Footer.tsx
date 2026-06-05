@@ -16,17 +16,17 @@ export const Footer = () => {
             <SplitText
               as="h2"
               text="Seu ponto de partida começa aqui."
-              className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white tracking-tight"
+              className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-[#ffffff] tracking-tight"
             />
-            <p className="text-white/80 text-lg md:text-xl max-w-2xl mt-2">
+            <p className="text-[#ffffff]/80 text-lg md:text-xl max-w-2xl mt-2">
               Dê o próximo passo para transformar a sua operação de crédito. Junte-se a centenas de empresas que já escalam com a Promosys.
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6 text-white font-medium text-sm md:text-base">
-            <span className="flex items-center gap-2"><div className="w-2 h-2 bg-white rounded-sm"></div> Implantação rápida</span>
-            <span className="flex items-center gap-2"><div className="w-2 h-2 bg-white rounded-sm"></div> Suporte dedicado</span>
-            <span className="flex items-center gap-2"><div className="w-2 h-2 bg-white rounded-sm"></div> Escalabilidade garantida</span>
+          <div className="flex flex-wrap justify-center gap-6 text-[#ffffff] font-medium text-sm md:text-base">
+            <span className="flex items-center gap-2"><div className="w-2 h-2 bg-[#ffffff] rounded-sm"></div> Implantação rápida</span>
+            <span className="flex items-center gap-2"><div className="w-2 h-2 bg-[#ffffff] rounded-sm"></div> Suporte dedicado</span>
+            <span className="flex items-center gap-2"><div className="w-2 h-2 bg-[#ffffff] rounded-sm"></div> Escalabilidade garantida</span>
           </div>
 
           <Button href="#" className="!px-10 !py-5 !text-lg !font-bold shadow-xl !bg-oxford !text-white !border-oxford/50 hover:!text-oxford mt-2">
@@ -55,10 +55,10 @@ export const Footer = () => {
             <a href="#" className="text-sm text-sagrado/70 hover:text-white transition-colors">Imprensa</a>
           </div>
           <div className="flex flex-col gap-4">
-            <SplitText as="h4" text="Produtos" className="text-cream font-semibold" />
-            <a href="#recursos" className="text-sm text-sagrado/70 hover:text-white transition-colors">CRM Promosys</a>
-            <a href="#hub" className="text-sm text-sagrado/70 hover:text-white transition-colors">Marketplace</a>
-            <a href="#hub" className="text-sm text-sagrado/70 hover:text-white transition-colors">Base de Dados</a>
+            <SplitText as="h4" text="Plataforma" className="text-cream font-semibold" />
+            <a href="#hub" className="text-sm text-sagrado/70 hover:text-white transition-colors">Ecossistema</a>
+            <a href="#resultados" className="text-sm text-sagrado/70 hover:text-white transition-colors">Resultados</a>
+            <a href="#dores" className="text-sm text-sagrado/70 hover:text-white transition-colors">Desafios</a>
           </div>
           <div className="flex flex-col gap-4">
             <SplitText as="h4" text="Contato" className="text-cream font-semibold" />
