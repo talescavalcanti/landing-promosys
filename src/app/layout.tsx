@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Hanken_Grotesk, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { ExperiencePopup } from "@/components/ExperiencePopup";
 
 // Corpo: Hanken Grotesk — legível e com mais caráter que Inter.
 const sans = Hanken_Grotesk({
@@ -83,6 +84,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <ExperiencePopup />
           {children}
         </ThemeProvider>
       </body>

@@ -113,6 +113,16 @@ body {
   animation: scroll-reverse 28s linear infinite;
 }
 
+@keyframes mesh-pan {
+  from { transform: translate(0, 0); }
+  /* O deslocamento exato de um módulo na diagonal para loop infinito imperceptível */
+  to { transform: translate(-103.724px, -59.708px); }
+}
+
+.animate-mesh {
+  animation: mesh-pan 6s linear infinite;
+}
+
 /* Split-text: máscara de linha por palavra (a palavra sobe de trás da borda).
    padding/margin-bottom dão folga p/ descendentes; vertical-align:top alinha topo. */
 .word {

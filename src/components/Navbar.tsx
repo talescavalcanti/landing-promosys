@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "./Button";
 import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
+import { ExperienceToggle } from "./ExperienceToggle";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -72,7 +73,10 @@ export function Navbar() {
           ))}
         </div>
         <div className="hidden md:flex items-center gap-4">
-          <ThemeToggle />
+          <div className="flex items-center gap-2 mr-2">
+            <ExperienceToggle />
+            <ThemeToggle />
+          </div>
           <Button href="#cta" className="!px-6 !py-2 !text-sm !font-semibold">Agendar Demo</Button>
         </div>
         <button className="md:hidden text-white p-2 pointer-events-auto" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menu">

@@ -3,8 +3,15 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/Button";
-import { BrandPattern } from "@/components/BrandPattern";
 import { SplitText } from "@/components/SplitText";
+import { Database, MapPin, Zap, ShieldCheck } from "lucide-react";
+
+const stats = [
+  { icon: <Database className="h-4 w-4" />, value: "+10M", label: "operações" },
+  { icon: <MapPin className="h-4 w-4" />, value: "Brasil", label: "cobertura nacional" },
+  { icon: <Zap className="h-4 w-4" />, value: "IN100", label: "em tempo real" },
+  { icon: <ShieldCheck className="h-4 w-4" />, value: "LGPD", label: "em conformidade" },
+];
 
 export function Hero() {
   const words = ["conversão.", "produtividade.", "previsibilidade."];
@@ -18,10 +25,49 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-[80vh] pt-40 pb-16 flex flex-col items-center justify-center px-4 bg-background overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60rem] h-[30rem] bg-royal/15 blur-[120px] rounded-full pointer-events-none"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-royal/15 via-background/80 to-background pointer-events-none"></div>
-      <BrandPattern className="absolute inset-0 opacity-[0.08]" color="var(--royal-light)" size={680} />
+    <section className="relative w-full min-h-[100svh] pt-36 pb-12 flex flex-col items-center justify-center px-4 bg-background overflow-hidden">
+      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
+        {/* Camada de Gradiente para dar efeito de "fade" nas bordas e focar no centro */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_10%,_var(--background)_80%)] z-10 pointer-events-none"></div>
+        
+        {/* SVG Pattern com animação de movimento da malha */}
+        <svg className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] animate-mesh text-[#3F73B8] opacity-50 dark:opacity-100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            {/* Peça 1: O loop principal isolado e alinhado a (0,0) */}
+            <path id="loop" d="M0 0 V-21.5936 C0 -27.9392 6.874 -31.911 12.371 -28.7356 L31.072 -17.9414 L49.774 -7.142 C55.27 -3.9666 55.27 3.9666 49.774 7.1417 L31.072 17.9417 L12.371 28.7357 C6.874 31.9107 0 27.9447 0 21.5937 V0 Z" stroke="currentColor" strokeWidth="1.04798" strokeMiterlimit="10" fill="none" />
+            
+            {/* Peça 2: A linha de conexão isolada */}
+            <path id="line" d="M-43.942 59.7087 C-42.491 59.7507 -40.997 59.4207 -39.588 58.6077 L-20.886 47.8137 L-2.185 37.0147 C3.311 33.8387 3.311 25.9057 -2.185 22.7307 L-20.886 11.9307 L-39.588 1.1369 C-40.997 0.3247 -42.491 -0.0159 -43.942 0.0313" stroke="currentColor" strokeWidth="1.04798" strokeMiterlimit="10" fill="none" />
+
+            {/* Bloco Base que compõe o módulo contínuo */}
+            <g id="unit">
+              {/* Coluna Ímpar */}
+              <use href="#loop" x="0" y="0" />
+              <use href="#line" x="0" y="0" />
+              {/* Coluna Par (Deslocamento exato para fechar a malha isométrica) */}
+              <use href="#loop" x="51.862" y="29.854" />
+              <use href="#line" x="51.862" y="29.854" />
+            </g>
+
+            {/* Padrão (Pattern) que repete o bloco base infinitamente */}
+            <pattern id="seamless-mesh" width="103.724" height="59.708" patternUnits="userSpaceOnUse">
+              {/* Renderizamos em uma grade 3x3 dentro do módulo para que os traços (strokes) não sejam cortados nas extremidades da caixa do pattern */}
+              <use href="#unit" x="-103.724" y="-59.708" />
+              <use href="#unit" x="0" y="-59.708" />
+              <use href="#unit" x="103.724" y="-59.708" />
+              <use href="#unit" x="-103.724" y="0" />
+              <use href="#unit" x="0" y="0" />
+              <use href="#unit" x="103.724" y="0" />
+              <use href="#unit" x="-103.724" y="59.708" />
+              <use href="#unit" x="0" y="59.708" />
+              <use href="#unit" x="103.724" y="59.708" />
+            </pattern>
+          </defs>
+
+          {/* Aplicação do Padrão preenchendo todo o SVG */}
+          <rect width="100%" height="100%" fill="url(#seamless-mesh)" />
+        </svg>
+      </div>
 
       <div className="relative z-10 flex flex-col items-center max-w-[64rem] mx-auto text-center gap-5">
 
@@ -33,10 +79,10 @@ export function Hero() {
           highlightWords={["transformam"]}
           highlightClass="text-royal-light"
           delay={0.1}
-          className="text-5xl md:text-7xl lg:text-[5.5rem] font-display font-extrabold tracking-tighter text-white leading-[1.05] drop-shadow-2xl"
+          className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold tracking-tighter text-balance max-w-[22ch] mx-auto text-white leading-[1.05] drop-shadow-2xl"
         />
 
-        <div className="text-xl md:text-2xl lg:text-3xl text-cream/90 max-w-4xl font-medium leading-relaxed flex flex-col md:flex-row items-center justify-center gap-2">
+        <div className="text-lg md:text-xl lg:text-2xl text-cream/90 max-w-4xl font-medium leading-relaxed flex flex-col md:flex-row items-center justify-center gap-2">
           <SplitText as="span" text="O CRM que transforma prospecção fria em" delay={0.2} />
           <span className="text-white font-medium inline-block min-w-[160px] text-left relative">
             <AnimatePresence mode="wait">
@@ -69,14 +115,42 @@ export function Hero() {
               Explorar Recursos
             </Button>
           </div>
+        </motion.div>
 
-          <div className="flex items-center gap-4 mt-6 text-cream/70 text-[11px] tracking-[0.18em] uppercase border-t border-white/5 pt-4">
-            <span>Setup Rápido</span>
-            <span className="w-1 h-1 rounded-full bg-white/20"></span>
-            <span>Sem Taxa de Adesão</span>
-            <span className="w-1 h-1 rounded-full bg-white/20"></span>
-            <span>Cancelamento Livre</span>
-          </div>
+        {/* Bento de capacidades / prova — preenche o hero e dá credibilidade */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
+          className="mt-10 grid w-full max-w-3xl grid-cols-2 md:grid-cols-4 gap-3"
+        >
+          {stats.map((s) => (
+            <div
+              key={s.value}
+              className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-royal-light/30 hover:bg-white/[0.07] hover:shadow-[0_10px_30px_rgba(49,121,219,0.18)]"
+            >
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-royal-light/20 bg-royal/15 text-royal-light">
+                {s.icon}
+              </span>
+              <div className="flex flex-col text-left leading-tight">
+                <span className="font-display text-lg font-bold text-cream">{s.value}</span>
+                <span className="text-[11px] uppercase tracking-wide text-cream/55">{s.label}</span>
+              </div>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.55, ease: "easeOut" }}
+          className="flex flex-wrap items-center justify-center gap-4 text-cream/55 text-[11px] tracking-[0.18em] uppercase"
+        >
+          <span>Setup Rápido</span>
+          <span className="w-1 h-1 rounded-full bg-white/20"></span>
+          <span>Sem Taxa de Adesão</span>
+          <span className="w-1 h-1 rounded-full bg-white/20"></span>
+          <span>Cancelamento Livre</span>
         </motion.div>
       </div>
     </section>
