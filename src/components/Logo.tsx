@@ -13,6 +13,8 @@ export function Logo({ className = "", title }: LogoProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Flag de montagem no cliente (hidratação next-themes) — setState único intencional.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
@@ -20,6 +22,7 @@ export function Logo({ className = "", title }: LogoProps) {
   const logoSrc = currentTheme === "light" ? "/logo-promosys-azul.png" : "/logo-promosys-branca-leve.png";
 
   return (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={logoSrc}
       alt={title || "Promosys Logo"}

@@ -13,8 +13,9 @@ const stats = [
   { icon: <ShieldCheck className="h-4 w-4" />, value: "LGPD", label: "em conformidade" },
 ];
 
+const words = ["conversão.", "produtividade.", "previsibilidade."];
+
 export function Hero() {
-  const words = ["conversão.", "produtividade.", "previsibilidade."];
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-[100svh] pt-36 pb-12 flex flex-col items-center justify-center px-4 bg-background overflow-hidden">
+    <section className="relative w-full min-h-[100svh] pt-24 pb-12 md:pt-36 md:pb-12 flex flex-col items-center justify-center px-4 bg-background overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
         {/* Camada de Gradiente para dar efeito de "fade" nas bordas e focar no centro */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_10%,_var(--background)_80%)] z-10 pointer-events-none"></div>
@@ -69,7 +70,7 @@ export function Hero() {
         </svg>
       </div>
 
-      <div className="relative z-10 flex flex-col items-center max-w-[64rem] mx-auto text-center gap-5">
+      <div className="relative z-10 flex flex-col items-center max-w-[64rem] mx-auto text-center gap-4 md:gap-5">
 
 
 
@@ -107,11 +108,11 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           className="flex flex-col items-center mt-5"
         >
-          <div className="flex flex-col sm:flex-row items-center gap-4">
-            <Button href="#cta" className="!px-8 !py-4 !text-base !font-semibold">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full max-w-xs sm:max-w-none">
+            <Button href="#cta" className="w-full sm:w-auto justify-center !px-8 !py-4 !text-base !font-semibold">
               Agendar Demonstração
             </Button>
-            <Button href="#planos" variant="outline" className="!px-8 !py-4 !text-base">
+            <Button href="#planos" variant="outline" className="w-full sm:w-auto justify-center !px-8 !py-4 !text-base">
               Explorar Recursos
             </Button>
           </div>
@@ -122,7 +123,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
-          className="mt-10 grid w-full max-w-3xl grid-cols-2 md:grid-cols-4 gap-3"
+          className="mt-8 md:mt-10 grid w-full max-w-3xl grid-cols-2 md:grid-cols-4 gap-3"
         >
           {stats.map((s) => (
             <div

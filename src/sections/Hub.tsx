@@ -44,10 +44,11 @@ type ModuleType = (typeof MODULES)[number];
    hairline de topo, glow de canto, ícone em container "joia" e bullets refinados. */
 function DetailCard({ m, onClose }: { m: ModuleType; onClose: () => void }) {
   return (
-    <div className="relative isolate overflow-hidden rounded-[1.75rem] p-8 backdrop-blur-2xl border border-white/10
-      bg-black/60
-      shadow-[0_8px_32px_rgba(0,0,0,0.45)]">
-      <span aria-hidden className="pointer-events-none absolute -top-20 -left-20 h-44 w-44 rounded-full bg-royal/25 blur-[60px]" />
+    <div className="relative isolate rounded-[1.75rem] p-6 md:p-8 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.45)]">
+      {/* Camada de fundo isolada para evitar o bug de cantos quadrados (bleeding) no Webkit */}
+      <div className="absolute inset-0 -z-10 rounded-[1.75rem] bg-black/60 backdrop-blur-2xl overflow-hidden [mask-image:-webkit-radial-gradient(white,black)]">
+        <span aria-hidden className="pointer-events-none absolute -top-20 -left-20 h-44 w-44 rounded-full bg-royal/25 blur-[60px]" />
+      </div>
 
       <button
         onClick={onClose}
@@ -173,7 +174,7 @@ export const Hub = () => {
     return (
       <div
         onClick={() => handleSelect(m)}
-        className="flex flex-col items-center gap-2 cursor-pointer w-[8rem] [transform-style:preserve-3d] transition-transform duration-300 hover:scale-105 md:hover:[transform:translateZ(40px)] md:[transform:translateZ(20px)]"
+        className="flex flex-col items-center gap-2 cursor-pointer w-24 md:w-[8rem] [transform-style:preserve-3d] transition-transform duration-300 hover:scale-105 md:hover:[transform:translateZ(40px)] md:[transform:translateZ(20px)]"
       >
         <div className={`flex h-[3.75rem] w-[3.75rem] items-center justify-center rounded-2xl border transition-all duration-300
           ${active
@@ -190,7 +191,7 @@ export const Hub = () => {
   };
 
   return (
-    <section ref={sectionRef} className="w-full py-20 px-6 relative z-10" id="hub">
+    <section ref={sectionRef} className="w-full py-16 md:py-20 px-4 md:px-6 relative z-10" id="hub">
       <div className="max-w-3xl mx-auto text-center mb-14">
         <SplitText
           as="h2"
@@ -232,6 +233,7 @@ export const Hub = () => {
                 <div className="w-[80%] h-[80%] bg-[rgba(49,121,219,0.32)] rounded-full flex items-center justify-center [transform:translateZ(30px)] [transform-style:preserve-3d]">
                    <div className="w-[78%] h-[78%] rounded-full flex flex-col items-center justify-center gap-1.5 [transform:translateZ(30px)] shadow-[inset_0_2px_12px_rgba(255,255,255,0.25)] bg-[radial-gradient(circle_at_35%_30%,var(--royal-light),var(--royal)_60%,var(--azul-tec))]">
                       <div className="w-28 h-28 drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src="/logo-promosys-branca-leve.png" alt="Promosys" className="w-full h-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] object-contain" />
                       </div>
                    </div>
@@ -240,7 +242,7 @@ export const Hub = () => {
           </div>
 
           {/* MOBILE LIST */}
-          <div className="flex flex-row flex-wrap justify-center gap-6 [transform-style:preserve-3d] w-full md:hidden">
+          <div className="flex flex-row flex-wrap justify-center gap-x-4 gap-y-6 w-full max-w-sm mx-auto md:hidden">
             {MODULES.map(m => (
               <Tile key={m.id} m={m} />
             ))}

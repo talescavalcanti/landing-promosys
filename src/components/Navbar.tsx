@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronRight } from "lucide-react";
 import { Button } from "./Button";
 import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
@@ -31,26 +31,25 @@ export function Navbar() {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-0 left-0 right-0 z-50 flex justify-center w-full px-4 pt-6 md:pt-8 pointer-events-none"
     >
-      <div 
-        className={`pointer-events-auto flex items-center justify-between transition-all duration-[var(--dur-lg)] ease-out-expo w-full ${
-          scrolled 
-            ? "max-w-5xl glass !border-transparent px-8 py-4" 
+      <div
+        className={`pointer-events-auto flex items-center justify-between transition-all duration-[var(--dur-lg)] ease-out-expo w-full ${scrolled
+            ? "max-w-5xl glass !border-transparent px-8 py-4"
             : "max-w-7xl px-4 py-4 bg-transparent !border-transparent"
-        }`}
+          }`}
       >
         <a href="#" aria-label="Promosys — ir para o início" className="flex items-center group relative">
           <Logo className="h-8 md:h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
         </a>
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
-            <motion.a 
+            <motion.a
               initial="initial"
               whileHover="hover"
-              key={l.href} 
-              href={l.href} 
+              key={l.href}
+              href={l.href}
               className="relative inline-flex overflow-hidden text-sm font-medium text-cream/70 hover:text-white transition-colors duration-300"
             >
-              <motion.span 
+              <motion.span
                 variants={{
                   initial: { y: 0 },
                   hover: { y: "-150%" }
@@ -59,7 +58,7 @@ export function Navbar() {
               >
                 {l.label}
               </motion.span>
-              <motion.span 
+              <motion.span
                 className="absolute inset-0 inline-flex items-center"
                 variants={{
                   initial: { y: "150%" },
@@ -77,26 +76,56 @@ export function Navbar() {
             <ExperienceToggle />
             <ThemeToggle />
           </div>
-          <Button href="#cta" className="!px-6 !py-2 !text-sm !font-semibold">Agendar Demo</Button>
+          <Button href="#cta" className="!px-6 !py-2 !text-sm !font-semibold">Teste Grátis</Button>
         </div>
-        <button className="md:hidden text-white p-2 pointer-events-auto" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menu">
+        <button
+          className="md:hidden flex items-center justify-center w-10 h-10 rounded-full text-white border border-white/10 hover:bg-white/5 transition-colors pointer-events-auto"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={mobileOpen}
+        >
           {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
-      
+
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+          <motion.div
+            initial={{ opacity: 0, y: -16, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="absolute top-24 left-4 right-4 md:hidden glass rounded-xl p-6 flex flex-col gap-4 pointer-events-auto"
+            exit={{ opacity: 0, y: -16, scale: 0.97 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute top-full mt-2 left-4 right-4 md:hidden rounded-2xl border border-white/10 bg-[var(--glass-bg)] backdrop-blur-xl shadow-[0_16px_48px_rgba(0,0,0,0.5)] p-4 flex flex-col gap-1 pointer-events-auto"
           >
             {links.map((l) => (
-              <a key={l.href} href={l.href} className="text-cream/80 hover:text-white transition-colors py-2 text-base font-medium" onClick={() => setMobileOpen(false)}>{l.label}</a>
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-cream/80 hover:text-white hover:bg-white/5 transition-colors"
+              >
+                {l.label}
+                <ChevronRight className="w-4 h-4 opacity-40" />
+              </a>
             ))}
-            <Button href="#cta" className="mt-4 w-full justify-center !py-3 !text-sm">Agendar demonstração</Button>
+
+            <div className="my-2 h-px bg-white/10" />
+
+            <div className="flex items-center justify-between px-2 py-1">
+              <span className="text-xs uppercase tracking-[0.18em] text-cream/50">Preferências</span>
+              <div className="flex items-center gap-2">
+                <ExperienceToggle />
+                <ThemeToggle />
+              </div>
+            </div>
+
+            <Button
+              href="#cta"
+              onClick={() => setMobileOpen(false)}
+              className="mt-3 w-full justify-center !py-3 !text-sm !font-semibold"
+            >
+              Teste Grátis
+            </Button>
           </motion.div>
         )}
       </AnimatePresence>

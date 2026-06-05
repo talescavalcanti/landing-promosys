@@ -12,6 +12,7 @@ export function ExperiencePopup() {
   useEffect(() => {
     const choice = localStorage.getItem("promosys_experience");
     if (!choice && window.location.hash !== "#motion") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShow(true);
     } else if (window.location.hash === "#motion" && choice !== "motion") {
       // If someone arrived via direct URL #motion but didn't choose, 

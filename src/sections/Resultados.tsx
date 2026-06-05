@@ -6,12 +6,6 @@ import { useGSAP } from "@gsap/react";
 import { Reveal } from "@/components/Reveal";
 import { SplitText } from "@/components/SplitText";
 
-const metrics = [
-  { value: 40, prefix: "Até ", suffix: "%", label: "menos tempo de atendimento" },
-  { value: 300, prefix: "+", suffix: "%", label: "conversão com dados atualizados" },
-  { value: 100, prefix: "", suffix: "%", label: "do funil sob controle gerencial" }
-];
-
 export const Resultados = () => {
   const container = useRef<HTMLDivElement>(null);
 

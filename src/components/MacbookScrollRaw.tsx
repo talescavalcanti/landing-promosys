@@ -2,6 +2,8 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import { DashboardMockup } from "@/components/DashboardMockup";
 
 export const MacbookScrollRaw = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -17,7 +19,8 @@ export const MacbookScrollRaw = () => {
   const lidTranslateY = useTransform(scrollYProgress, [0, 1], [0, 1500]);
 
   return (
-    <div ref={containerRef} className="relative w-full pb-10">
+    <>
+    <div ref={containerRef} className="relative w-full pb-10 hidden md:block">
       <div id="macbook-container" className="flex min-h-[200vh] w-full shrink-0 transform flex-col items-center justify-start py-0 [perspective:800px] scale-[0.30] sm:scale-[0.35] md:scale-[0.50] lg:scale-[0.65] xl:scale-[0.75] 2xl:scale-90 md:pt-40 md:pb-80 overflow-hidden relative">
     
 
@@ -40,59 +43,22 @@ export const MacbookScrollRaw = () => {
         
         
         <div className="absolute inset-0 rounded-lg bg-background overflow-hidden border border-royal/30">
-           {/* Promosys Dashboard Mockup */}
-           <div className="absolute inset-0 bg-[radial-gradient(var(--royal)_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
-           
-           <div className="relative w-full h-full flex">
-             {/* Sidebar */}
-             <div className="w-16 h-full bg-background border-r border-royal/20 flex flex-col items-center py-4 gap-4">
-               <div className="w-8 h-8 rounded-full bg-royal/20 flex items-center justify-center mb-4 border border-royal/40">
-                 <div className="w-3 h-3 bg-royal rounded-sm rotate-45" />
-               </div>
-               <div className="w-6 h-6 rounded bg-royal/20" />
-               <div className="w-6 h-6 rounded bg-white/5" />
-               <div className="w-6 h-6 rounded bg-white/5" />
-               <div className="w-6 h-6 rounded bg-white/5" />
-             </div>
-             
-             {/* Main Content */}
-             <div className="flex-1 p-5 flex flex-col gap-4">
-                {/* Header */}
-                <div className="w-full h-8 flex justify-between items-center">
-                  <div className="h-4 w-32 bg-white/10 rounded" />
-                  <div className="flex gap-2">
-                    <div className="h-6 w-24 bg-royal/20 border border-royal/40 rounded-full" />
-                    <div className="h-6 w-6 rounded-full bg-white/10" />
-                  </div>
-                </div>
-                
-                {/* Cards */}
-                <div className="flex gap-4">
-                  <div className="h-20 flex-1 bg-gradient-to-br from-royal/10 to-transparent border border-royal/30 rounded-lg p-3 flex flex-col justify-between">
-                    <div className="h-2 w-16 bg-royal/50 rounded" />
-                    <div className="h-6 w-24 bg-white/90 rounded" />
-                  </div>
-                  <div className="h-20 flex-1 bg-white/5 border border-white/10 rounded-lg p-3 flex flex-col justify-between">
-                    <div className="h-2 w-16 bg-white/20 rounded" />
-                    <div className="h-6 w-24 bg-white/60 rounded" />
-                  </div>
-                  <div className="h-20 flex-1 bg-white/5 border border-white/10 rounded-lg p-3 flex flex-col justify-between">
-                    <div className="h-2 w-16 bg-white/20 rounded" />
-                    <div className="h-6 w-24 bg-white/60 rounded" />
-                  </div>
-                </div>
-
-                {/* Chart Area */}
-                <div className="flex-1 w-full bg-white/5 border border-white/10 rounded-lg relative overflow-hidden p-4">
-                  <div className="h-3 w-24 bg-white/20 rounded mb-4" />
-                  <div className="absolute bottom-0 left-0 w-full h-[70%] bg-gradient-to-t from-royal/20 to-transparent" />
-                  <svg className="absolute bottom-0 left-0 w-full h-[70%]" preserveAspectRatio="none" viewBox="0 0 100 100">
-                    <path d="M0,100 L0,60 Q20,30 40,70 T80,40 L100,20 L100,100 Z" className="fill-royal/20" />
-                    <path d="M0,60 Q20,30 40,70 T80,40 L100,20" fill="none" strokeWidth="2" className="stroke-royal" />
-                  </svg>
-                </div>
-             </div>
-           </div>
+          <Image 
+            src="/dashboard-promosys-lightmode.png" 
+            alt="Promosys Dashboard Light Mode" 
+            fill
+            className="object-cover object-top dark:hidden"
+            quality={100}
+            priority
+          />
+          <Image 
+            src="/dashborad-promosys-darkmode.png" 
+            alt="Promosys Dashboard Dark Mode" 
+            fill
+            className="hidden dark:block object-cover object-top"
+            quality={100}
+            priority
+          />
         </div>
       </motion.div>
 
@@ -611,7 +577,7 @@ export const MacbookScrollRaw = () => {
         <div className="[transform:translateZ(0)] rounded-[4px] p-[0.5px] [will-change:transform] bg-white/[0.2] shadow-xl shadow-white">
           <div className="flex w-6 h-6 items-center justify-center rounded-[3.5px] bg-[#0A090D] " style={{boxShadow: '0px -0.5px 2px 0 #0D0D0F inset, -0.5px 0px 2px 0 #0D0D0F inset'}}>
             <div className="flex w-full flex-col items-center justify-center text-[5px] text-white ">
-              <span className="block">"</span><span className="block">'</span>
+              <span className="block">&quot;</span><span className="block">&apos;</span>
             </div>
           </div>
         </div>
@@ -873,5 +839,18 @@ export const MacbookScrollRaw = () => {
     </motion.div> 
   </div>
     </div>
+
+    {/* Mobile: preview estático do dashboard (sem o scroll de 200vh) */}
+    <div className="md:hidden w-full px-4 pb-10">
+      <div className="mx-auto w-full max-w-sm">
+        <div className="rounded-2xl border border-white/10 bg-[#010101] p-2 shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+          <div className="relative w-full h-64 overflow-hidden rounded-xl border border-royal/30 bg-background">
+            <DashboardMockup />
+          </div>
+        </div>
+        <div className="mx-auto mt-1 h-2 w-2/3 rounded-b-2xl bg-white/10" />
+      </div>
+    </div>
+    </>
   );
 };

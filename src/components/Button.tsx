@@ -39,7 +39,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     if (href) {
       return (
-        <motion.a href={href} {...(buttonProps as any)}>
+        <motion.a href={href} {...(buttonProps as unknown as HTMLMotionProps<"a">)}>
           {fillElement}
           <span className="relative z-10 flex items-center">{children}</span>
         </motion.a>

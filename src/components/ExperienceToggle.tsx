@@ -9,9 +9,12 @@ export function ExperienceToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Init no cliente (lê localStorage/hash) — setState intencional na montagem.
+    /* eslint-disable react-hooks/set-state-in-effect */
     setMounted(true);
     const choice = localStorage.getItem("promosys_experience");
     setIsMotion(choice === "motion" || window.location.hash === "#motion");
+    /* eslint-enable react-hooks/set-state-in-effect */
   }, []);
 
   const toggleExperience = () => {
